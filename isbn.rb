@@ -20,7 +20,7 @@ def isbn_10(num)
         sum += holder
     end
 
-    checksum = sum%11
+    checksum = sum % 11
 
     if checksum == check_digit.to_i
         return true
@@ -36,7 +36,34 @@ def isbn_13(num)
     elsif num.to_i.to_s != num
         return false
     end
-    true
+
+    temp = num.split('')
+    check_digit = temp.pop
+
+    sum = 0
+    count = 0
+
+    temp.each do |v|
+        if count % 2 == 0
+            alt = 1
+        else
+            alt = 3
+        end
+        holder = v.to_i * alt
+        sum += holder
+        count += 1
+    end
+    
+    checksum = 10 - (sum % 10)
+    if checksum.to_s.length > 1
+        checksum %= 10
+    end
+
+    if checksum == check_digit.to_i
+        return true
+    else
+        return false
+    end
 end
 
 
