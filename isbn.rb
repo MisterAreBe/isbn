@@ -1,8 +1,5 @@
 def isbn_10(num)
     num.gsub!(/[- ]/, '')
-    unless num.length == 10
-        return false
-    end
     bad = 0
     if num.gsub(/[\D]/, '') != num
         bad += 1
@@ -45,9 +42,7 @@ end
 
 def isbn_13(num)
     num.gsub!(/[- ]/, '')
-    if num.length != 13
-        return false
-    elsif num.gsub(/[\D]/, '') != num
+    if num.gsub(/[\D]/, '') != num
         return false
     end
 
@@ -81,7 +76,12 @@ def isbn_13(num)
 end
 
 def isbn(num)
+    num.gsub!(/[- ]/, '')
     if num.length == 10
         return isbn_10(num)
+    elsif num.length == 13
+        return isbn_13(num)
+    else
+        return false
     end
 end
