@@ -1,11 +1,22 @@
 <html>
     <head>
-            <title></title>
+            <title>RB's ISBN</title>
             <script src="js/scripts.js"></script>
             <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="/css/styles.css">
     </head>
     <body>
-        <%= yield %>
+        <center>
+            <div>
+                <form method="post" action='/check_isbn'>
+                    <label for="isbn_checker">Place an isbn your are curous about into the box bellow<br>To find out if it is valid</label><br><br>
+                    <input type="text" name="isbn" id="isbn_checker" placeholder="For Validating ISBN"><br>
+                    <input type="submit" value="Check ISBN">
+                </form>
+            </div><br><br>
+            <div>
+                <span><%= isbn_check %></span>
+            </div>
+        </center>
     </body>
 </html>
