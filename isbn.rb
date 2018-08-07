@@ -6,7 +6,22 @@ def isbn_10(num)
         return false
     end
 
-    true
+    temp = num.split('')
+    check_digit = temp.pop
+    if check_digit == 'x'
+        check_digit = 10
+    end
+    sum = 0
+    temp.each_with_index do |v,i|
+        holder = v.to_i * (i + 1)
+        sum += holder
+    end
+    checksum = sum%11
+    if checksum == check_digit.to_i
+        return true
+    else
+        return false
+    end
 end
 
 
