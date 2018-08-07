@@ -1,6 +1,9 @@
 def isbn_10(num)
-    false
+    if num.length != 10
+        return false
+    end
 
+    true
 end
 
 

@@ -14,5 +14,5 @@ class ISBN < Minitest::Test
     def test_if_isbn_good
         assert_equal(true, isbn_10("7421394761"))
     end
-    
+
 end
