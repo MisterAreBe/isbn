@@ -1,4 +1,5 @@
 def isbn_10(num)
+    num.gsub!(/[- ]/, '')
     if num.length != 10
         return false
     end
