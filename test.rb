@@ -54,7 +54,7 @@ class ISBN < Minitest::Test
     def test_extra_valid_isbn10_2
         assert_equal(true, isbn_10("0-321-14653-0"))
     end
-    
+
     def test_extra_valid_isbn10_3
         assert_equal(true, isbn_10("877195869x"))
     end
@@ -65,5 +65,9 @@ class ISBN < Minitest::Test
     
     def test_extra_valid_isbn13_2
         assert_equal(true, isbn_13("978 0 471 48648 0"))
+    end
+
+    def test_combining_functions
+        assert_equal(true, isbn("0471958697"))
     end
 end
