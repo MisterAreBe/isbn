@@ -34,5 +34,11 @@ class ISBN < Minitest::Test
     def test_isbn13_good
         assert_equal(true, isbn_13("9780470059029"))
     end
+    
+    def test_ignore_dash_and_space_isbn13
+        assert_equal(true, isbn_13("9 7 8 0-47-0-05 90 2-9"))
+    end
 
+
+    
 end
