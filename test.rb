@@ -15,4 +15,8 @@ class ISBN < Minitest::Test
         assert_equal(true, isbn_10("7421394761"))
     end
 
+    def test_ignore_dash_and_space
+        assert_equal(true, isbn_10("74-2-1 3-9 4-7 61"))
+    end
+
 end
