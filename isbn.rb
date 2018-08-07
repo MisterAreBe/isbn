@@ -24,7 +24,9 @@ def isbn_10(num)
     end
 end
 
-
+def isbn_13(num)
+    false
+end
 
 
 
