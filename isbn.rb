@@ -8,15 +8,20 @@ def isbn_10(num)
 
     temp = num.split('')
     check_digit = temp.pop
+
     if check_digit == 'x'
         check_digit = 10
     end
+
     sum = 0
+
     temp.each_with_index do |v,i|
         holder = v.to_i * (i + 1)
         sum += holder
     end
+
     checksum = sum%11
+
     if checksum == check_digit.to_i
         return true
     else
@@ -25,7 +30,10 @@ def isbn_10(num)
 end
 
 def isbn_13(num)
-    false
+    if num.length != 13
+        return false
+    end
+    true
 end
 
 
