@@ -2,6 +2,8 @@ def isbn_10(num)
     num.gsub!(/[- ]/, '')
     if num.length != 10
         return false
+    elsif num.to_i.to_s != num
+        return false
     end
 
     true
