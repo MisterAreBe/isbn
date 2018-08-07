@@ -39,6 +39,10 @@ class ISBN < Minitest::Test
         assert_equal(true, isbn_13("9 7 8 0-47-0-05 90 2-9"))
     end
 
+    def test_isbn13_only_takes_numbers
+        assert_equal(false, isbn_13("abcdefghijklm"))
+    end
 
-    
+
+
 end
