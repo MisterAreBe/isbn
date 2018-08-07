@@ -33,6 +33,8 @@ def isbn_13(num)
     num.gsub!(/[- ]/, '')
     if num.length != 13
         return false
+    elsif num.to_i.to_s != num
+        return false
     end
     true
 end
