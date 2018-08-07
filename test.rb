@@ -8,6 +8,11 @@ class ISBN < Minitest::Test
     end
     
     def test_if_isbn_bad
-        assert_equal(false, isbn("yxz"))
+        assert_equal(false, isbn_10("yxz"))
     end
+
+    def test_if_isbn_good
+        assert_equal(true, isbn_10("7421394761"))
+    end
+    
 end

@@ -1,4 +1,4 @@
-def isbn(num)
+def isbn_10(num)
     false
 
 end
