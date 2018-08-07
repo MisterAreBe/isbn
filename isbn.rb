@@ -79,3 +79,9 @@ def isbn_13(num)
         return false
     end
 end
+
+def isbn(num)
+    if num.length == 10
+        return isbn_10(num)
+    end
+end
