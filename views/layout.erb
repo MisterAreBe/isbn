@@ -11,11 +11,23 @@
                 <form method="post" action='/check_isbn'>
                     <label for="isbn_checker">Place an isbn your are curous about into the box bellow<br>To find out if it is valid</label><br><br>
                     <input type="text" name="isbn" id="isbn_checker" placeholder="For Validating ISBN"><br>
-                    <input type="submit" value="Check ISBN">
+                    <input type="submit" value="Check ISBN"><br>
+                    <div>
+                        <table>
+                            <% isbn_holder.each_with_index do |v,i| %>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="stored_isbn[]" value="<%= v %>">
+                                        <div><%= v %></div>
+                                    </td><td>
+                                        <input type="hidden" name="isbn_str[]" value="<%= isbn_check[i] %>">
+                                        <div><%= isbn_check[i] %></div>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </table>
+                    </div>
                 </form>
-            </div><br><br>
-            <div>
-                <span><%= isbn_check %></span>
             </div>
         </center>
     </body>
