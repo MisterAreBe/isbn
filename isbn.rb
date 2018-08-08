@@ -120,43 +120,33 @@ def isbn_refa2(num)
     sum = 0
     count = 0
     temp.each_with_index do |v,i|
-        if count % 2 == 0
-            alt = 1
-        else
-            alt = 3
+        if count % 2 == 0; alt = 1
+        else; alt = 3
         end
-        if num.length == 10
-            holder = v.to_i * (i + 1)
-        else
-            holder = v.to_i * alt
+        if num.length == 10; holder = v.to_i * (i + 1)
+        else; holder = v.to_i * alt
         end
         sum += holder
         count += 1
     end
-    if num.length == 10
-        if sum % 11 == check_digit.to_i
-            return true
-        else
-            return false
-        end
-    else
-        checksum = 10 - sum % 10
-        if checksum.to_s.length > 1
-            checksum %= 10
-        end
-        if checksum == check_digit.to_i
-            return true
-        else
-            return false
-        end
-
-        # if 10 - (sum % 10).to_s.length > 1
-        #     checksum = (10 - sum % 10) % 10
-        # end
-        # if checksum == check_digit.to_i
-        #     return true
-        # else
-        #     return false
-        # end
-    end
+    temp_arr = [num, sum]
 end
+
+
+
+# if num.length == 10
+#     if sum % 11 == check_digit.to_i
+#         return true
+#     else
+#         return false
+#     end
+# else
+#     if 10 - (sum % 10).to_s.length > 1
+#         checksum = (10 - sum % 10) % 10
+#     end
+#     if checksum == check_digit.to_i
+#         return true
+#     else
+#         return false
+#     end
+# end
