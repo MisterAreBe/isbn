@@ -91,6 +91,10 @@ class ISBN < Minitest::Test
         assert_equal(true, isbn_refa2("9  78-0-13-14 9- -50 5-0"))
     end
 
+    def test_refa2_returns_false
+        assert_equal(false, isbn_refa2("abs123w54x"))
+    end
+
 
 
 end
