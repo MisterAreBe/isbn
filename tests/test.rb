@@ -88,7 +88,7 @@ class ISBN < Minitest::Test
     end
 
     def test_refa2_returns_true
-        assert_equal(["9780131495050", 100], isbn_refa2("9  78-0-13-14 9- -50 5-0"))
+        assert_equal(["9780131495050", 100, "0"], isbn_refa2("9  78-0-13-14 9- -50 5-0"))
     end
 
     def test_refa2_returns_false

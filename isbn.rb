@@ -129,27 +129,26 @@ def isbn_refa2(num)
         sum += holder
         count += 1
     end
-    temp_arr = [num, sum]
+    temp_arr = [num, sum, check_digit]
 end
 
-def isbn_refa3(arr)
-    true
+def isbn_refa3(num)
+    arr = isbn_refa2(num)
+    if arr == false; return false; end
+    num = arr[0]; sum = arr[1]; check_digit = arr[2]
+    if num.length == 10
+        if sum % 11 == check_digit.to_i
+            return true
+        else; return false
+        end
+    else
+        checksum = 10 - sum % 10
+        if checksum.to_s.length > 1
+            checksum = (10 - sum % 10) % 10
+        end
+        if checksum == check_digit.to_i
+            return true
+        else; return false
+        end
+    end 
 end
-
-
-# if num.length == 10
-#     if sum % 11 == check_digit.to_i
-#         return true
-#     else
-#         return false
-#     end
-# else
-#     if 10 - (sum % 10).to_s.length > 1
-#         checksum = (10 - sum % 10) % 10
-#     end
-#     if checksum == check_digit.to_i
-#         return true
-#     else
-#         return false
-#     end
-# end
