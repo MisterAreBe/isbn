@@ -89,36 +89,30 @@ end
 #Refactoring below
 
 def isbn_refa1(num)
-    num.gsub!(/[- ]/, '')
-    bad = 0
+    num.gsub!(/[- ]/, ''); bad = 0
     if num.gsub(/[\D]/, '') != num
         bad += 1
     end
     if num.end_with?('x') || num.end_with?('X')
-        bad -= 1
-        check = num.gsub(/[\D]/, '')
-        x = num[-1]
+        bad -= 1; check = num.gsub(/[\D]/, ''); x = num[-1]
         if "#{check}#{x}" != num
             bad += 1
         end
     end
     unless bad <= 0
         return false
-    else
-        num
+    else; num
     end
 end
 
 def isbn_refa2(num)
     num = isbn_refa1(num)
     if num == false; return false; end
-    temp = num.split('')
-    check_digit = temp.pop
+    temp = num.split(''); check_digit = temp.pop
     if check_digit == 'x' || check_digit == 'X'
         check_digit = 10
     end
-    sum = 0
-    count = 0
+    sum = 0; count = 0
     temp.each_with_index do |v,i|
         if count % 2 == 0; alt = 1
         else; alt = 3
@@ -126,8 +120,7 @@ def isbn_refa2(num)
         if num.length == 10; holder = v.to_i * (i + 1)
         else; holder = v.to_i * alt
         end
-        sum += holder
-        count += 1
+        sum += holder; count += 1
     end
     temp_arr = [num, sum, check_digit]
 end
@@ -138,17 +131,14 @@ def isbn_refa3(num)
     num = arr[0]; sum = arr[1]; check_digit = arr[2]
     if num.length == 10
         if sum % 11 == check_digit.to_i
-            return true
-        else; return false
+            return true; else; return false
         end
-    else
-        checksum = 10 - sum % 10
+    else; checksum = 10 - sum % 10
         if checksum.to_s.length > 1
             checksum = (10 - sum % 10) % 10
         end
         if checksum == check_digit.to_i
-            return true
-        else; return false
+            return true; else; return false
         end
     end 
 end
