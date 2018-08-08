@@ -105,6 +105,6 @@ def isbn_refa1(num)
     unless bad <= 0
         return false
     else
-        true
+        num
     end
 end
