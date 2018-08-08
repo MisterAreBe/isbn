@@ -108,3 +108,7 @@ def isbn_refa1(num)
         num
     end
 end
+
+def isbn_refa2(num)
+    true
+end
