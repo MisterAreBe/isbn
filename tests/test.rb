@@ -76,7 +76,7 @@ class ISBN < Minitest::Test
     end
 
     def test_refactor_returns_num_10
-        assert_equal("0471958697", isbn_refa1("0   47 1-95 8--6-9-7"))
+        assert_equal("0471958697", isbn_refa1("0   4- 7 1-  - -95 8--6-9-7"))
     end
 
     def test_refactor_returns_num_13
@@ -93,6 +93,10 @@ class ISBN < Minitest::Test
 
     def test_refa2_returns_false
         assert_equal(false, isbn_refa2("abs123w54x"))
+    end
+
+    def test_refa3_returns_true
+        assert_equal(true, isbn_refa3("0   4- 7 1-  - -95 8--6-9-7"))
     end
 
 
