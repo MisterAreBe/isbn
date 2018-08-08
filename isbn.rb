@@ -132,6 +132,9 @@ def isbn_refa2(num)
     temp_arr = [num, sum]
 end
 
+def isbn_refa3(arr)
+    true
+end
 
 
 # if num.length == 10
