@@ -74,4 +74,8 @@ class ISBN < Minitest::Test
     def test_continued_combination
         assert_equal(true, isbn("978-0-13-1 49 50 5-0"))
     end
+
+    def test_refactor
+        assert_equal(true, isbn_refa1("0471958697"))
+    end
 end

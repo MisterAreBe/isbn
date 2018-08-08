@@ -85,3 +85,26 @@ def isbn(num)
         return false
     end
 end
+
+#Refactoring below
+
+def isbn_refa1(num)
+    num.gsub!(/[- ]/, '')
+    bad = 0
+    if num.gsub(/[\D]/, '') != num
+        bad += 1
+    end
+    if num.end_with?('x') || num.end_with?('X')
+        bad -= 1
+        check = num.gsub(/[\D]/, '')
+        x = num[-1]
+        if "#{check}#{x}" != num
+            bad += 1
+        end
+    end
+    unless bad <= 0
+        return false
+    else
+        true
+    end
+end
