@@ -1,26 +1,29 @@
 require 'CSV'
 require_relative 'isbn.rb'
 
-CSV.foreach("input_isbn_file.csv") do |v|
+x = CSV.read("input_isbn_file.csv")
+temp = []
+acorn = []
 
+x.each do |v|
+    temp << v[1]
 end
 
-x = CSV.read("input_isbn_file.csv")
+temp.each do |isbn|
+    acorn << isbn_refa3(isbn)
+end
 
-temp = []
-
-x.each do |z|
-    z.each_with_index do |v,i|
-        if i == 1
-            temp << v
-        end
+x.each_with_index do |v,i|
+    if acorn[i] == true
+        v << "Valid"
+    else
+        v << "Invalid"
     end
 end
 
-puts "#{temp}"
-
-
-
 CSV.open("output_isbn_file.csv", "wb") do |csv|
-    
+   x.each do |v|
+    z = v.join(', ')
+    csv << [z]
+   end
 end
