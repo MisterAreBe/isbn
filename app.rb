@@ -1,5 +1,7 @@
 require 'sinatra'
+require 'CSV'
 require_relative 'isbn.rb'
+require_relative 'isbn_csv.rb'
 
 enable :sessions
 
