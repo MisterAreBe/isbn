@@ -1,29 +1,34 @@
 require 'sinatra'
-require 'CSV'
 require_relative 'isbn.rb'
-require_relative 'isbn_csv.rb'
 
 enable :sessions
 
 get '/' do
-  isbn_check = session[:check] || []
-  isbn_holder = session[:isbn] || []
-  erb :layout, locals: {isbn_check: isbn_check, isbn_holder: isbn_holder}
+  isbn_check = session[:isbn_holder] || []
+  erb :layout, locals: {isbn_check: isbn_check}
 end
 
 post '/check_isbn' do
   isbn = params[:isbn]
   stored_isbn = params[:stored_isbn] || []
   isbn_str = params[:isbn_str] || []
-  stored_isbn << isbn
-  temp = isbn_refa3(isbn)
-  if temp == true
-    temp = "Valid"
-  elsif temp == false
-    temp = "Invalid"
+  x = isbn.split("\r\n")
+  x.each do |v|
+    if v != nil
+      stored_isbn << v
+    else
+      stored_isbn << ""
+    end
+    if isbn_refa3(v)
+      isbn_str << "Valid"
+    else
+      isbn_str << "Invalid"
+    end
   end
-  isbn_str << temp
-  session[:check] = isbn_str
-  session[:isbn] = stored_isbn
+  isbn_check = []
+  isbn_str.each_with_index do |v,i|
+    isbn_check << [stored_isbn[i], v]
+  end
+  session[:isbn_holder] = isbn_check
   redirect '/'
 end

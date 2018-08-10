@@ -107,4 +107,44 @@ class ISBN < Minitest::Test
         assert_equal(false, isbn_refa3(""))
     end
 
+    def test_big_array
+        x = "9780470059029
+        4780470059029
+        978 0 471 48648 0
+        978-0596809485
+        978-0-13-149505-0
+        978-0-262-13472-9
+        7465905
+        00000000
+        7987022-78962-ds-22
+        0471958697
+        0 471 60695 2
+        0-470-84525-2
+        0-321-14653-0
+        877195869x
+        877195x869
+        
+        877195869xx
+        877195@869x"
+        y = x.split("\n")
+        assert_equal(true, isbn_refa3(y[0]))
+        assert_equal(false, isbn_refa3(y[1]))
+        assert_equal(true, isbn_refa3(y[2]))
+        assert_equal(true, isbn_refa3(y[3]))
+        assert_equal(true, isbn_refa3(y[4]))
+        assert_equal(true, isbn_refa3(y[5]))
+        assert_equal(false, isbn_refa3(y[6]))
+        assert_equal(false, isbn_refa3(y[7]))
+        assert_equal(false, isbn_refa3(y[8]))
+        assert_equal(true, isbn_refa3(y[9]))
+        assert_equal(true, isbn_refa3(y[10]))
+        assert_equal(true, isbn_refa3(y[11]))
+        assert_equal(true, isbn_refa3(y[12]))
+        assert_equal(true, isbn_refa3(y[13]))
+        assert_equal(false, isbn_refa3(y[14]))
+        assert_equal(false, isbn_refa3(y[15]))
+        assert_equal(false, isbn_refa3(y[16]))
+        assert_equal(false, isbn_refa3(y[17]))
+    end
+    
 end

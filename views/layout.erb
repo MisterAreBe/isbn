@@ -9,19 +9,23 @@
         <center>
             <div>
                 <form method="post" action='/check_isbn'>
-                    <label for="isbn_checker">Place an isbn or more into the box bellow<br>To find out if it is valid</label><br><br>
-                    <textarea rows="20" col="20" name="isbn[]" id="isbn_checker" placeholder-"For Validating one or more ISBN"></textarea><br>
+                    <label for="isbn_checker">Place an ISBN or more into the box bellow<br>To find out if it is valid<br>(Please seperate ISBN entries with a new line)</label><br><br>
+                    <textarea rows="15" col="25" name="isbn" id="isbn_checker" placeholder="For Validating one or more ISBN"></textarea><br>
                     <input type="submit" value="Check ISBN"><br>
                     <div>
                         <table>
-                            <% isbn_holder.each_with_index do |v,i| %>
+                            <tr>
+                                <th>ISBN Entries</th>
+                                <th>Valid?</th>
+                            </tr>
+                            <% isbn_check.each do |v| %>
                                 <tr>
                                     <td>
-                                        <input type="hidden" name="stored_isbn[]" value="<%= v %>">
-                                        <div><%= v %></div>
+                                        <input type="hidden" name="stored_isbn[]" value="<%= v[0] %>">
+                                        <div><%= v[0] %></div>
                                     </td><td>
-                                        <input type="hidden" name="isbn_str[]" value="<%= isbn_check[i] %>">
-                                        <div><%= isbn_check[i] %></div>
+                                        <input type="hidden" name="isbn_str[]" value="<%= v[1] %>">
+                                        <div><%= v[1] %></div>
                                     </td>
                                 </tr>
                             <% end %>

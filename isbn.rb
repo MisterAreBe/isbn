@@ -99,7 +99,7 @@ def isbn_refa1(num)
             bad += 1
         end
     end
-    if num.length < 10
+    if num.length < 10 || num.length > 13
         bad += 1
     end
     unless bad <= 0
